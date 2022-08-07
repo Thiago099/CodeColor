@@ -1,7 +1,7 @@
 import $ from 'jquery';
 $(function() { 
 	var enabled = true;
-	$("#in").keydown(function(e) {
+	$("textarea").keydown(function(e) {
 
 		// Escape key toggles tab on/off
 		if (e.keyCode==27)
