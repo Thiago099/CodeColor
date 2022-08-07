@@ -1,7 +1,8 @@
 body{
   margin:0;
-  overflow: none;
+  overflow: hidden;
 }
+
 .code-editor{
   box-sizing: border-box;
   width:100%;
