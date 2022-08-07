@@ -13,3 +13,7 @@ function updateScreen(text)
 {
   $("#out").html(Colorize(text).replace(/\n/g, "<br>").replace(/\t/g,"&#9;"));
 }
+$("#in").on('scroll', function(){
+  // set out to be the same as in
+  $("#out").css({top:-$(this).scrollTop()+"px"});   
+});
