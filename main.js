@@ -36,6 +36,27 @@ $("#in").on("keydown", function(e) {
   }
   if (e.altKey && e.keyCode == 40) moveLine("down")
   else if (e.altKey && e.keyCode == 38) moveLine("up")  
+  //ctrl+x
+  else if (e.ctrlKey && e.keyCode == 88)
+  {
+    if($(this).get(0).selectionStart == $(this).get(0).selectionEnd)
+    {
+      e.preventDefault();
+      var cursor = $(this).get(0).selectionStart
+      var line = $(this).val().substring(0, cursor).split("\n").length;
+      var lines = $(this).val().split("\n");
+      var clipboard = lines[line-1];
+      lines.splice(line-1, 1);
+      $(this).val(lines.join("\n"));
+      const newCursor = lines
+      .filter((item, index) => index <= line-1)
+      .join("\n").length;
+      $(this).get(0).selectionStart = newCursor
+      $(this).get(0).selectionEnd = newCursor
+      navigator.clipboard.writeText("\n"+clipboard);
+    }
+  }
+
   setTimeout(() =>{
     window.localStorage.setItem("code",$(this).val())
     updateScreen($(this).val());
